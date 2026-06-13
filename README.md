@@ -1,25 +1,53 @@
-# Calculatrice Python
+# Reporting Réglementaire Bancaire (Bâle III)
 
-Une calculatrice simple en Python avec les quatre opérations de base.
+Application Python de calcul et d'export des ratios prudentiels Bâle III.
 
-## Fonctions disponibles
+## Ratios calculés
 
-- `additionner(a, b)` — retourne `a + b`
-- `soustraire(a, b)` — retourne `a - b`
-- `multiplier(a, b)` — retourne `a * b`
-- `diviser(a, b)` — retourne `a / b` (lève `ValueError` si `b == 0`)
+| Ratio | Seuil réglementaire | Description |
+|---|---|---|
+| **CAR** — Capital Adequacy Ratio | ≥ 8% | (Tier1 + Tier2) / RWA |
+| **LCR** — Liquidity Coverage Ratio | ≥ 100% | HQLA / Sorties nettes 30j |
+| **NSFR** — Net Stable Funding Ratio | ≥ 100% | ASF / RSF |
+| **Ratio de levier** | ≥ 3% | Tier1 / Exposition totale |
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Utilisation
 
-```python
-from calculatrice import additionner, diviser
+```bash
+python main.py data/exemple_banque.json
+```
 
-print(additionner(3, 5))   # 8
-print(diviser(10, 4))      # 2.5
+Les rapports sont générés dans le dossier `output/` :
+- `rapport_T4-2025.csv`
+- `rapport_T4-2025.json`
+- `rapport_T4-2025.xlsx`
+- `rapport_T4-2025.pdf`
+
+## Format des données d'entrée
+
+```json
+{
+  "banque": "Banque Exemple SA",
+  "periode": "T4-2025",
+  "date_rapport": "2025-12-31",
+  "fonds_propres": { "tier1": 12500000, "tier2": 2500000 },
+  "actifs_ponderes_risque": 95000000,
+  "actifs_liquides_hqla": 18000000,
+  "sorties_nettes_30j": 14000000,
+  "financement_stable_disponible": 55000000,
+  "financement_stable_requis": 48000000,
+  "exposition_totale_levier": 210000000
+}
 ```
 
 ## Tests
 
 ```bash
-pytest tests/
+pytest tests/ -v
 ```

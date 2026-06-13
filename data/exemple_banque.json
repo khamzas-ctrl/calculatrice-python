@@ -1,0 +1,15 @@
+{
+  "banque": "Banque Exemple SA",
+  "periode": "T4-2025",
+  "date_rapport": "2025-12-31",
+  "fonds_propres": {
+    "tier1": 12500000,
+    "tier2": 2500000
+  },
+  "actifs_ponderes_risque": 95000000,
+  "actifs_liquides_hqla": 18000000,
+  "sorties_nettes_30j": 14000000,
+  "financement_stable_disponible": 55000000,
+  "financement_stable_requis": 48000000,
+  "exposition_totale_levier": 210000000
+}
