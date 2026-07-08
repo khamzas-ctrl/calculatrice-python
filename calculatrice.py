@@ -14,3 +14,9 @@ def diviser(a, b):
     if b == 0:
         raise ValueError("Division par zéro impossible")
     return a / b
+
+
+def modulo(a, b):
+    if b == 0:
+        raise ValueError("Modulo par zéro impossible")
+    return a % b

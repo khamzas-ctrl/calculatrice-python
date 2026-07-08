@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from calculatrice import additionner, soustraire, multiplier, diviser
+from calculatrice import additionner, soustraire, multiplier, diviser, modulo
 import pytest
 
 
@@ -29,3 +29,13 @@ def test_diviser():
 def test_diviser_par_zero():
     with pytest.raises(ValueError, match="Division par zéro impossible"):
         diviser(5, 0)
+
+
+def test_modulo():
+    assert modulo(10, 3) == 1
+    assert modulo(9, 3) == 0
+
+
+def test_modulo_par_zero():
+    with pytest.raises(ValueError, match="Modulo par zéro impossible"):
+        modulo(5, 0)
